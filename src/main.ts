@@ -74,7 +74,7 @@ export const io = new Server(wsServer, {
 });
 
 app.post("/auth/register", async (req, res) => {
-  const { name, email, document, password } = req.body;
+  const { name, document, email, password, confirmPassword} = req.body;
   try {
     const userId = await authenticationService.registerUser(
       {
@@ -97,7 +97,7 @@ app.post("/auth/register", async (req, res) => {
     });
 
     res.status(201).json({
-      message: "User created successfully",
+      message: "Usuário cadastrado com sucesso",
       data: {
         id: userId,
         name,
